@@ -1,7 +1,13 @@
 package org.example;
 
+import org.example.generics.TaskList;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TaskListTest {
     TaskList instance = new TaskList();
@@ -16,8 +22,22 @@ public class TaskListTest {
 
     @Test
     @DisplayName("First test of TaskList class: Add tasks to the list")
-    void addTask(){
-        //Kode
+    public void addToList(){
+        Task taskTest = new Task("Test Task",
+                "This is the description for the test task",
+                LocalDate.now().plusDays(3));
+
+        List<Task> taskListTest = instance.addToList(taskTest);
+
+        Task actual = taskListTest.get(taskListTest.size()-1);
+        Task expected = taskTest;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Second test: Filter tasks based on keywords in title or description")
+    public void filterBasedOnKeyword(){
+
     }
 
     //Brug samme struktur som testen til de andre tests.
