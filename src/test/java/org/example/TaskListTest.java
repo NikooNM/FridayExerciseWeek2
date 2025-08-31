@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TaskListTest {
+public class TaskListTest<T> {
     TaskList instance = new TaskList();
 
     @org.junit.jupiter.api.BeforeEach
@@ -37,7 +37,13 @@ public class TaskListTest {
     @Test
     @DisplayName("Second test: Filter tasks based on keywords in title or description")
     public void filterBasedOnKeyword(){
+        String keyword = "do";
 
+        List<T> actual = instance.filterBasedOnKeyword(keyword);
+        //List<T> expected =
+        //assertEquals(expected, actual);
+
+        //Erstat de to kommentarer ovenfor med kode der passer
     }
 
     //Brug samme struktur som testen til de andre tests.

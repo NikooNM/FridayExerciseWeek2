@@ -2,25 +2,31 @@ package org.example.generics;
 
 import org.example.Task;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Spliterator;
+import java.util.*;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class TaskList<T> implements TaskListData<T>, Iterable<T> {
     private T data;
+    private List<T> actualTaskList = new ArrayList<>();
 
     public List<T> addToList(T taskToAdd) {
-        List<T> actualTaskList = new ArrayList<>();
         actualTaskList.add(taskToAdd);
-
         return actualTaskList;
-
-
     }
 
-    //TaskLstData metoder
+    public List<T> filterBasedOnKeyword(String keyword){
+        List<T> filteredList = new ArrayList<>();
+
+        actualTaskList
+                .stream()
+                .filter( e -> e.equals(keyword))
+                .forEach(filteredList::add);
+
+        return filteredList;
+    }
+
+    //TaskListData metoder
     @Override
     public Object store(T data) {
         return null;
