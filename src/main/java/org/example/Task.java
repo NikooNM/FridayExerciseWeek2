@@ -16,4 +16,11 @@ public class Task {
         this.description = description;
         this.dueDate = dueDate;
     }
+
+    @Override
+    public String toString() {
+        return "Task \n Title: " + getTitle() + "\n"
+                + " description: " + getDescription() + "\n"
+                + " dueDate: " + getDueDate() + "\n";
+    }
 }

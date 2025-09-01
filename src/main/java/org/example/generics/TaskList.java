@@ -48,7 +48,7 @@ public class TaskList<T> implements TaskListData<T>, Iterable<T> {
         for (T task : actualTaskList){
             System.out.println(task);
         }
-        System.out.println(); //Empty line to make code more readable
+        System.out.println("*new operation* \n"); //Line that separates output code to make it more readable
     }
 
     //Same method above, but overloaded
@@ -56,6 +56,6 @@ public class TaskList<T> implements TaskListData<T>, Iterable<T> {
         for (T task : listToPrint){
             System.out.println(task);
         }
-        System.out.println(); //Empty line to make code more readable
+        System.out.println("*new operation* \n"); //Line that separates output code to make it more readable
     }
 }
