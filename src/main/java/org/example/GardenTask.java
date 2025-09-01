@@ -15,7 +15,7 @@ public class GardenTask extends Task {
         return super.toString() + " location: " + getGardenLocation() + "\n";
     }
 
-    public String getGardenLocation() {
+    private String getGardenLocation() {
         return gardenLocation;
     }
 }

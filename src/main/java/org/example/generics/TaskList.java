@@ -12,20 +12,21 @@ public class TaskList<T extends Task> implements TaskListData<T>, Iterable<T> {
 
     //First function: Add task
     public List<T> addToList(T taskToAdd) {
-        actualTaskList.add(taskToAdd);
-        return actualTaskList;
+        actualTaskList.add(taskToAdd); //Original
+        List<T> copyTaskList = new ArrayList<>(actualTaskList); //Copy
+        return copyTaskList;
     }
 
     //Second function: Filter based on word
     public List<T> filterBasedOnKeyword(String keyword) {
-        List<T> filteredList = new ArrayList<>();
-
+        List<T> filteredList = new ArrayList<>(); //Original (notice empty here, but contains filtered tasks after next command
         actualTaskList
                 .stream()
                 .filter(e -> e.toString().toLowerCase().contains(keyword.toLowerCase()))
                 .forEach(filteredList::add);
+        List<T> filteredListCopy = new ArrayList<>(filteredList); //Copy
 
-        return filteredList;
+        return filteredListCopy;
     }
 
     //Third function: Sort by date (ascending)
@@ -33,26 +34,33 @@ public class TaskList<T extends Task> implements TaskListData<T>, Iterable<T> {
         List<T> taskListSortedByDate = actualTaskList
                 .stream()
                 .sorted(Comparator.comparing(Task::getDueDate))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()); //Original
 
-        return taskListSortedByDate;
+        List<T> taskListSortedByDateCopy = new ArrayList<>(taskListSortedByDate); //Copy
+        return taskListSortedByDateCopy;
     }
 
     //Fourth function: Get tasks due today
     public List<T> getDueTodayTasks(){
 
-        return actualTaskList.stream()
+        List<T> dueTodayList = actualTaskList.stream()
                 .filter(t -> t.getDueDate().isEqual(LocalDate.now()))
                 .collect(Collectors.toList());
+
+        List<T> dueTodayListCopy = new ArrayList<>(dueTodayList);
+        return dueTodayListCopy;
     }
 
     //Fifth function: Get tasks that are overdue
     public List<T> getOverdueTasks() {
 
-        return actualTaskList
+        List<T> overdueTasksList = actualTaskList
                 .stream()
                 .filter(t -> t.getDueDate().isBefore(LocalDate.now()))
                 .collect(Collectors.toList());
+
+        List<T> overdueTasksListCopy = new ArrayList<>(overdueTasksList);
+        return overdueTasksListCopy;
     }
 
     //Other methods

@@ -37,9 +37,10 @@ public class TaskListTest<T> {
     @Test
     @DisplayName("First test of TaskList class: Add tasks to the list")
     public void addToList(){
-        List<Task> taskListTest = instance.addToList(taskTest1);
+        List<Task> taskListTest = instance.addToList(taskTest1); //Original
+        List<Task> copyTaskListTest = new ArrayList<>(taskListTest); //Copy
 
-        Task actual = taskListTest.get(0);
+        Task actual = copyTaskListTest.get(0);
         Task expected = taskTest1;
         assertEquals(expected, actual);
     }
