@@ -5,12 +5,14 @@ import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TaskListTest<T> {
-    TaskList instance = new TaskList();
+    private TaskList instance = new TaskList();
 
     Task taskTest1 = new Task("Test Task 1",
             "This is the description for the first test task",
@@ -37,7 +39,7 @@ public class TaskListTest<T> {
     public void addToList(){
         List<Task> taskListTest = instance.addToList(taskTest1);
 
-        Task actual = taskListTest.get(taskListTest.size()-1);
+        Task actual = taskListTest.get(0);
         Task expected = taskTest1;
         assertEquals(expected, actual);
     }
