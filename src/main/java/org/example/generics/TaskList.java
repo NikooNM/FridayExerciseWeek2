@@ -15,18 +15,18 @@ public class TaskList<T> implements TaskListData<T>, Iterable<T> {
         return actualTaskList;
     }
 
-    public List<T> filterBasedOnKeyword(String keyword){
+    public List<T> filterBasedOnKeyword(String keyword) {
         List<T> filteredList = new ArrayList<>();
 
         actualTaskList
                 .stream()
-                .filter( e -> e.equals(keyword))
+                .filter(e -> e.toString().toLowerCase().contains(keyword.toLowerCase()))
                 .forEach(filteredList::add);
 
         return filteredList;
     }
 
-    //TaskListData metoder
+    //TaskListData methods
     @Override
     public Object store(T data) {
         return null;
@@ -37,19 +37,25 @@ public class TaskList<T> implements TaskListData<T>, Iterable<T> {
         return null;
     }
 
-    //Iterable metoder
+    //Iterable method
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return actualTaskList.iterator();
     }
 
-    @Override
-    public void forEach(Consumer<? super T> action) {
-        Iterable.super.forEach(action);
+    //Short method that prints the task list (it is called many times throughout the main method)
+    public void printList(){
+        for (T task : actualTaskList){
+            System.out.println(task);
+        }
+        System.out.println(); //Empty line to make code more readable
     }
 
-    @Override
-    public Spliterator<T> spliterator() {
-        return Iterable.super.spliterator();
+    //Same method above, but overloaded
+    public void printList(List<T> listToPrint){
+        for (T task : listToPrint){
+            System.out.println(task);
+        }
+        System.out.println(); //Empty line to make code more readable
     }
 }
