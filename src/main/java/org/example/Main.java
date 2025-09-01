@@ -16,7 +16,7 @@ public class Main {
 
         Task goToGym = new Task("Go to gym",
                 "Go to gym tomorrow afternoon and do your workout A, B or C depending on the day of the week",
-                LocalDate.now().plusDays(1));
+                LocalDate.now().plusDays(-1));
 
         Task doCleaning = new Task("Do a deep clean of your home",
                 "Vacuum the house as soon as possible and clean it entirely",
@@ -44,6 +44,13 @@ public class Main {
         //Operation 2: Filter tasks based on a keyword in title/description
         toDoList.printList(toDoList.filterBasedOnKeyword("garden"));
 
-        //Operation 3:
+        //Operation 3: Sort tasks by due date
+        toDoList.printList(toDoList.sortByDate());
+
+        //Operation 4: Get tasks due today
+        toDoList.printList(toDoList.getDueTodayTasks());
+
+        //Operation 5: Get overdue tasks
+        toDoList.printList(toDoList.getOverdueTasks());
     }
 }
